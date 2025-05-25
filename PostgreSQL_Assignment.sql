@@ -55,3 +55,19 @@ INSERT INTO sightings (ranger_id, species_id, location, sighting_time, notes) VA
 (1,2, 'Snowfall Pass', '2024-05-18 18:30:00', NULL);
 
 
+-- PROBLEM-1
+
+INSERT INTO rangers(name, region) VALUES ('Derek Fox', 'Coastal Plains');
+
+
+-- PROBLEM-2
+
+SELECT count(DISTINCT species_id) AS unique_species_count  FROM sightings;
+
+
+
+-- PROBLEM-3
+
+SELECT * FROM sightings
+WHERE location ILIKE '%Pass%'
+
