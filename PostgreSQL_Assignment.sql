@@ -34,7 +34,6 @@ notes TEXT
 );
 
 
-
 -- inserted data into rangers table
 INSERT INTO rangers (name, region) VALUES ('Alice Green', 'Northern Hills'), ('Bob White', 'River Delta'), ('Carol King', 'Mountain Range');
 
@@ -84,3 +83,45 @@ GROUP BY name, name;
 SELECT common_name FROM species
 LEFT JOIN sightings USING(species_id)
 WHERE sighting_id IS NULL;
+
+-- PROBLEM-6
+
+SELECT 
+    common_name, 
+    sighting_time, 
+    "name"
+FROM sightings 
+JOIN species USING(species_id)
+JOIN rangers USING(ranger_id)
+ORDER BY sighting_time DESC
+LIMIT 2;
+
+
+
+
+-- PROBLEM-7
+
+-- drop the old check constrain 
+ALTER TABLE species DROP CONSTRAINT species_conservation_status_check;
+
+-- Add the new CHECK constraint including 'Historic'
+
+ALTER TABLE species
+ADD CONSTRAINT species_conservation_status_check
+CHECK (conservation_status IN ('Vulnerable', 'Endangered', 'Historic'));
+
+-- update the species
+UPDATE species
+SET conservation_status = 'Historic'
+WHERE discovery_date < '1800-01-01';
+
+
+-- PROBLEM-8
+
+SELECT sighting_id,
+    CASE
+        WHEN EXTRACT(HOUR FROM sightings.sighting_time) < 12 THEN 'Morning'
+        WHEN EXTRACT(HOUR FROM sightings.sighting_time) BETWEEN 12 AND 17 THEN 'Afternoon'
+        ELSE 'Evening'
+        END AS time_of_day
+    FROM sightings;
