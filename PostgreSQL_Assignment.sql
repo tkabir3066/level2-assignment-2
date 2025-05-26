@@ -19,8 +19,7 @@ CREATE TABLE species (
     conservation_status VARCHAR(50) CHECK (
              conservation_status IN (
             'Vulnerable',
-            'Endangered',
-            'Critically Endangered'
+            'Endangered'
     )
     )
 );
@@ -35,6 +34,7 @@ notes TEXT
 );
 
 
+
 -- inserted data into rangers table
 INSERT INTO rangers (name, region) VALUES ('Alice Green', 'Northern Hills'), ('Bob White', 'River Delta'), ('Carol King', 'Mountain Range');
 
@@ -43,8 +43,8 @@ INSERT INTO rangers (name, region) VALUES ('Alice Green', 'Northern Hills'), ('B
 INSERT INTO species (common_name, scientific_name, discovery_date, conservation_status) VALUES ('Snow Leopard', 'Panthera uncia', '1775-01-01', 'Endangered'),
 ('Bengal Tiger', 'Panthera tigris tigris', '1758-01-01', 'Endangered'), 
 ('Red Panda', 'Ailurus fulgens', '1825-01-01', 'Vulnerable'),
-('Asiatic Elephant', 'Elephas maximus indicus', '1758-01-01', 'Endangered'),
-('Javan Rhino', 'Rhinoceros sondaicus', '1822-07-20', 'Critically Endangered');
+('Asiatic Elephant', 'Elephas maximus indicus', '1758-01-01', 'Endangered');
+
 
 
 -- inserted data into sightings table
@@ -79,3 +79,8 @@ JOIN sightings on rangers.ranger_id = sightings.ranger_id
 GROUP BY name, name;
 
 
+-- PROBLEM-5
+
+SELECT common_name FROM species
+LEFT JOIN sightings USING(species_id)
+WHERE sighting_id IS NULL;
