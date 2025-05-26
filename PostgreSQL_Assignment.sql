@@ -43,8 +43,8 @@ INSERT INTO rangers (name, region) VALUES ('Alice Green', 'Northern Hills'), ('B
 INSERT INTO species (common_name, scientific_name, discovery_date, conservation_status) VALUES ('Snow Leopard', 'Panthera uncia', '1775-01-01', 'Endangered'),
 ('Bengal Tiger', 'Panthera tigris tigris', '1758-01-01', 'Endangered'), 
 ('Red Panda', 'Ailurus fulgens', '1825-01-01', 'Vulnerable'),
-(' Asiatic Elephant', 'Elephas maximus indicus', '1758-01-01', 'Endangered'),
-('Javan Rhino', 'Rhinoceros sondaicus', '1822-07-20', 'Critically Endangered')
+('Asiatic Elephant', 'Elephas maximus indicus', '1758-01-01', 'Endangered'),
+('Javan Rhino', 'Rhinoceros sondaicus', '1822-07-20', 'Critically Endangered');
 
 
 -- inserted data into sightings table
@@ -70,4 +70,12 @@ SELECT count(DISTINCT species_id) AS unique_species_count  FROM sightings;
 
 SELECT * FROM sightings
 WHERE location ILIKE '%Pass%'
+
+
+-- PROBLEM-4
+
+SELECT name, count(sighting_id) AS total_sightings FROM rangers
+JOIN sightings on rangers.ranger_id = sightings.ranger_id
+GROUP BY name, name;
+
 
