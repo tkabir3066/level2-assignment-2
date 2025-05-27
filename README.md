@@ -19,7 +19,7 @@
 
 ---
 
-## 2️⃣ LIMIT এবং OFFSET ক্লজের ব্যবহার
+## 2️⃣What are the LIMIT and OFFSET clauses used for?
 
 ### 🔹 LIMIT ক্লজ:
 
@@ -62,7 +62,7 @@ SELECT * FROM employees LIMIT 5 OFFSET 10;
 
 ---
 
-## 3️⃣ UPDATE স্টেটমেন্ট দিয়ে ডেটা পরিবর্তন
+## 3️⃣ How can you modify data using UPDATE statements?
 
 ### 🔹 বেসিক সিনট্যাক্স:
 
@@ -123,7 +123,7 @@ AND shipments.ship_date IS NOT NULL;
 
 ---
 
-## 4️⃣ GROUP BY ক্লজ এবং Aggregation অপারেশন
+## 4️⃣ Explain the GROUP BY clause and its role in aggregation operations.
 
 ### 🔹 কাজ:
 
@@ -142,7 +142,7 @@ GROUP BY column1;
 
 ---
 
-## 5️⃣ Aggregate ফাংশন: COUNT(), SUM(), AVG()
+## 5️⃣ How can you calculate aggregate functions like COUNT(), SUM(), and AVG() in PostgreSQL?
 
 ### উদাহরণ ১: প্রতিটি ডিপার্টমেন্টে কর্মচারীর সংখ্যা
 
